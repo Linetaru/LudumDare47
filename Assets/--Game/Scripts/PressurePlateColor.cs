@@ -10,7 +10,8 @@ public class PressurePlateColor : MonoBehaviour
         Yellow,
         Red,
         Green,
-        Blue
+        Blue,
+        Temporal
     };
     public CubeColor CubeColorToActive;
 
@@ -22,7 +23,8 @@ public class PressurePlateColor : MonoBehaviour
         if ((other.CompareTag("YellowCube") && CubeColorToActive == CubeColor.Yellow)
             || (other.CompareTag("RedCube") && CubeColorToActive == CubeColor.Red)
             || (other.CompareTag("GreenCube") && CubeColorToActive == CubeColor.Green)
-            || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue))
+            || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue)
+            || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
         {
             isActivate = true;
         }
@@ -33,7 +35,8 @@ public class PressurePlateColor : MonoBehaviour
         if ((other.CompareTag("YellowCube") && CubeColorToActive == CubeColor.Yellow)
             || (other.CompareTag("RedCube") && CubeColorToActive == CubeColor.Red)
             || (other.CompareTag("GreenCube") && CubeColorToActive == CubeColor.Green)
-            || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue))
+            || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue)
+            || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
         {
             isActivate = false;
         }

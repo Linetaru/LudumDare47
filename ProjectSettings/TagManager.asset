@@ -8,6 +8,7 @@ TagManager:
   - GreenCube
   - BlueCube
   - YellowCube
+  - TemporalCube
   layers:
   - Default
   - TransparentFX
