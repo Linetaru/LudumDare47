@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3173989563732025130}
   - component: {fileID: 3173989563732025129}
   - component: {fileID: 3173989563732025128}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GreenCube
   m_TagString: GreenCube
   m_Icon: {fileID: 0}
@@ -108,5 +108,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0

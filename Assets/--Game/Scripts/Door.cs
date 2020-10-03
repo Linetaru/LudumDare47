@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Door : MonoBehaviour
 {
@@ -17,16 +18,19 @@ public class Door : MonoBehaviour
 
     private Color colorAlpha;
 
+    private Tween tween;
+
     private void Start()
     {
-        colorAlpha = gameObject.GetComponent<Renderer>().material.color;
-        DoAction = DoActionVoid;
+        //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
+        //DoAction = DoActionVoid;
+        tween = null;
     }
 
     private void Update()
     {
         CheckDoorPlates();
-        DoAction();
+        //DoAction();
     }
 
     private void CheckDoorPlates()
@@ -76,9 +80,13 @@ public class Door : MonoBehaviour
     private void StartOpenDoor()
     {
         gameObject.GetComponent<Collider>().enabled = false;
-        durToDisappear = durationToDisappear - durToAppear;
-        colorAlpha = gameObject.GetComponent<Renderer>().material.color;
-        DoAction = OpenDoor;
+        //durToDisappear = durationToDisappear - durToAppear;
+        //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
+        if(tween != null)
+            if (tween.IsPlaying())
+                tween.Kill();
+
+        tween = gameObject.transform.DOMoveY(gameObject.transform.position.y + 3, durationToDisappear);
     }
 
     private void OpenDoor()
@@ -97,9 +105,13 @@ public class Door : MonoBehaviour
     private void StartCloseDoor()
     {
         gameObject.GetComponent<Collider>().enabled = true;
-        durToAppear = durationToAppear - durToDisappear;
-        colorAlpha = gameObject.GetComponent<Renderer>().material.color;
-        DoAction = CloseDoor;
+        //durToAppear = durationToAppear - durToDisappear;
+        //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
+        //DoAction = CloseDoor;
+        if (tween != null)
+            if (tween.IsPlaying())
+                tween.Kill();
+        tween = gameObject.transform.DOMoveY(gameObject.transform.position.y - 3, durationToAppear);
     }
 
     private void CloseDoor()

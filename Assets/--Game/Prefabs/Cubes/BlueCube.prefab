@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7405985640851501199}
   - component: {fileID: 7405985640851501196}
   - component: {fileID: 7405985640851501197}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueCube
   m_TagString: BlueCube
   m_Icon: {fileID: 0}
@@ -108,5 +108,5 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
