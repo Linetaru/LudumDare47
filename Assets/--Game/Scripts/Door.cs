@@ -19,12 +19,16 @@ public class Door : MonoBehaviour
     private Color colorAlpha;
 
     private Tween tween;
+    private float maxPosY;
+    private float minPosY;
 
     private void Start()
     {
         //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
         //DoAction = DoActionVoid;
         tween = null;
+        maxPosY = gameObject.transform.position.y + 3;
+        minPosY = gameObject.transform.position.y;
     }
 
     private void Update()
@@ -82,11 +86,12 @@ public class Door : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         //durToDisappear = durationToDisappear - durToAppear;
         //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
-        if(tween != null)
+        //DoAction = OpenDoor;
+        if (tween != null)
             if (tween.IsPlaying())
                 tween.Kill();
 
-        tween = gameObject.transform.DOMoveY(gameObject.transform.position.y + 3, durationToDisappear);
+        tween = gameObject.transform.DOMoveY(maxPosY, durationToDisappear);
     }
 
     private void OpenDoor()
@@ -111,7 +116,7 @@ public class Door : MonoBehaviour
         if (tween != null)
             if (tween.IsPlaying())
                 tween.Kill();
-        tween = gameObject.transform.DOMoveY(gameObject.transform.position.y - 3, durationToAppear);
+        tween = gameObject.transform.DOMoveY(minPosY, durationToAppear);
     }
 
     private void CloseDoor()
