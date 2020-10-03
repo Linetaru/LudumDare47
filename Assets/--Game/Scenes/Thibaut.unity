@@ -204,6 +204,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1016164240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2115337275280436190, guid: b83fafb4916843243aa69a5a29cf1981,
+    type: 3}
+  m_PrefabInstance: {fileID: 2115337275489043534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1178370122
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +891,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5144432350489196908, guid: 360a6e2d7fee91743a9377c5bb8fb844,
+        type: 3}
+      propertyPath: objectsToOpenTheDoor.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144432350489196908, guid: 360a6e2d7fee91743a9377c5bb8fb844,
+        type: 3}
+      propertyPath: durationToDisappear
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144432350489196908, guid: 360a6e2d7fee91743a9377c5bb8fb844,
+        type: 3}
+      propertyPath: durationToAppear
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5144432350489196908, guid: 360a6e2d7fee91743a9377c5bb8fb844,
+        type: 3}
+      propertyPath: objectsToOpenTheDoor.Array.data[0]
+      value: 
+      objectReference: {fileID: 1016164240}
     - target: {fileID: 5144432350489196910, guid: 360a6e2d7fee91743a9377c5bb8fb844,
         type: 3}
       propertyPath: m_LocalPosition.x

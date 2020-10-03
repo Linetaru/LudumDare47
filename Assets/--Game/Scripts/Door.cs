@@ -1,13 +1,35 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
     public GameObject[] objectsToOpenTheDoor;
+    public float durationToDisappear;
+    public float durationToAppear;
+
+    private float durToDisappear = 0f;
+    private float durToAppear = 0f;
 
     private bool isOpen = false;
-    void Update()
+    private Action DoAction;
+
+    private Color colorAlpha;
+
+    private void Start()
+    {
+        colorAlpha = gameObject.GetComponent<Renderer>().material.color;
+        DoAction = DoActionVoid;
+    }
+
+    private void Update()
+    {
+        CheckDoorPlates();
+        DoAction();
+    }
+
+    private void CheckDoorPlates()
     {
         bool allActivated = true;
         for (int i = 0; i < objectsToOpenTheDoor.Length; i++)
@@ -33,6 +55,7 @@ public class Door : MonoBehaviour
         {
 #if UNITY_EDITOR
             Debug.Log("Open the door!");
+            StartOpenDoor();
             isOpen = true;
 #endif
         }
@@ -40,8 +63,55 @@ public class Door : MonoBehaviour
         {
 #if UNITY_EDITOR
             Debug.Log("Close the door!");
+            StartCloseDoor();
             isOpen = false;
 #endif
         }
+    }
+
+    private void DoActionVoid()
+    {
+    }
+
+    private void StartOpenDoor()
+    {
+        gameObject.GetComponent<Collider>().enabled = false;
+        durToDisappear = durationToDisappear - durToAppear;
+        colorAlpha = gameObject.GetComponent<Renderer>().material.color;
+        DoAction = OpenDoor;
+    }
+
+    private void OpenDoor()
+    {
+        durToDisappear -= Time.deltaTime;
+
+        if (durToDisappear <= 0f)
+        {
+            durToDisappear = 0f;
+            DoAction = DoActionVoid;
+        }
+        else
+            gameObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color (colorAlpha.r, colorAlpha.g, colorAlpha.b, 0f), colorAlpha, durToDisappear);
+    }
+
+    private void StartCloseDoor()
+    {
+        gameObject.GetComponent<Collider>().enabled = true;
+        durToAppear = durationToAppear - durToDisappear;
+        colorAlpha = gameObject.GetComponent<Renderer>().material.color;
+        DoAction = CloseDoor;
+    }
+
+    private void CloseDoor()
+    {
+        durToAppear -= Time.deltaTime;
+
+        if (durToAppear <= 0f)
+        {
+            durToAppear = 0f;
+            DoAction = DoActionVoid;
+        }
+        else
+            gameObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color(colorAlpha.r, colorAlpha.g, colorAlpha.b, 1f), colorAlpha, durToAppear);
     }
 }
