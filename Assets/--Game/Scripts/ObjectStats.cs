@@ -10,8 +10,6 @@ public class ObjectStats : MonoBehaviour
     [HideInInspector] public bool isOnHand;
     public bool isObjectCanBeDuplicate;
 
-    public int numberOfCubeSpawnable;
-
     private bool alreadyUsedToBeDuplicate;
 
     private void Start()
