@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1387208885920716097}
   - component: {fileID: 3793346349374710155}
   - component: {fileID: 2550508303704515616}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: "N\xE9on 2"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
