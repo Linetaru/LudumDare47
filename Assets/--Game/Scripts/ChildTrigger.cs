@@ -13,4 +13,10 @@ public class ChildTrigger : MonoBehaviour
             isAfterDoor = true;
         }
     }
+    
+    public void ResetRaise()
+    {
+        isAfterDoor = false;
+    }
+
 }
