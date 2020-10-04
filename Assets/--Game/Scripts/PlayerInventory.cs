@@ -47,7 +47,8 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, takeObjectMaxDistanceRayCast, layerMaskObject))
                 {
-                    AddObjectInInventory(left, hit.collider.gameObject);
+                    if(hit.collider.gameObject.layer == 8)
+                        AddObjectInInventory(left, hit.collider.gameObject);
                 }
             }
         }
@@ -64,7 +65,8 @@ public class PlayerInventory : MonoBehaviour
             {
                 if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, takeObjectMaxDistanceRayCast, layerMaskObject))
                 {
-                    AddObjectInInventory(right, hit.collider.gameObject);
+                    if (hit.collider.gameObject.layer == 8)
+                        AddObjectInInventory(right, hit.collider.gameObject);
                 }
             }
         }

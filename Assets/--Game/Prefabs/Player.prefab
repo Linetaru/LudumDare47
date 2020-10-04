@@ -260,7 +260,7 @@ MonoBehaviour:
   rightHand: {fileID: 6794520200475673563}
   layerMaskObject:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1335
   layerMaskNoPlayer:
     serializedVersion: 2
     m_Bits: 311

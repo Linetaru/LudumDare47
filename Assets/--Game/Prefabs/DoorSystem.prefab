@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6380316427719109449}
   - component: {fileID: 6380316427719109448}
   - component: {fileID: 6380316427719109451}
+  - component: {fileID: 2821929876673737931}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -107,6 +108,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAfterDoor: 0
+--- !u!114 &2821929876673737931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6380316427719109446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934b57a537db8104fb8c234a7dd159af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 36012302d049f2943b471aa9d1aa75cf, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6380316427719109451}
+        m_MethodName: ResetRaise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6380316429455924407
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +146,7 @@ GameObject:
   - component: {fileID: 6380316429455924408}
   - component: {fileID: 6380316429455924409}
   - component: {fileID: 6380316429455924410}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DoorSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
