@@ -10,20 +10,18 @@ public class ObjectStats : MonoBehaviour
     [HideInInspector] public bool isOnHand;
     public bool isObjectCanBeDuplicate;
 
-    public int numberOfCubeSpawnable;
-
-    private bool alreadyUseToBeDuplicate;
+    private bool alreadyUsedToBeDuplicate;
 
     private void Start()
     {
         startPosition = this.transform.position;
         isOnHand = false;
-        alreadyUseToBeDuplicate = false;
+        alreadyUsedToBeDuplicate = false;
     }
 
     public void ResetObject()
     {
-        if(alreadyUseToBeDuplicate && !isOnHand)
+        if(alreadyUsedToBeDuplicate && !isOnHand)
         {
             Destroy(this.gameObject);
         }
@@ -31,18 +29,16 @@ public class ObjectStats : MonoBehaviour
         if (!isOnHand)
             this.transform.DOMove(startPosition,0.001f);
 
-        if (isObjectCanBeDuplicate && isOnHand)
+        if (isObjectCanBeDuplicate && isOnHand && !alreadyUsedToBeDuplicate)
         {
-            if (GameObject.FindGameObjectsWithTag(this.gameObject.tag).Length <= numberOfCubeSpawnable)
-            {
                 GameObject gameObject = Instantiate(this.gameObject);
                 gameObject.transform.position = startPosition;
                 gameObject.GetComponent<Rigidbody>().useGravity = true;
                 gameObject.GetComponent<BoxCollider>().enabled = true;
                 gameObject.GetComponent<ObjectStats>().isOnHand = false;
                 gameObject.name = this.gameObject.name;
-                alreadyUseToBeDuplicate = true;
-            }
+                alreadyUsedToBeDuplicate = true;
+
         }
     }
 }
