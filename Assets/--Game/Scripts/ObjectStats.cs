@@ -11,14 +11,21 @@ public class ObjectStats : MonoBehaviour
 
     public int numberOfCubeSpawnable;
 
+    private bool alreadyUseToBeDuplicate;
+
     private void Start()
     {
         startPosition = this.transform.position;
         isOnHand = false;
+        alreadyUseToBeDuplicate = false;
     }
 
     public void ResetObject()
     {
+        if(alreadyUseToBeDuplicate && !isOnHand)
+        {
+            Destroy(this.gameObject);
+        }
 
         if (!isOnHand)
             this.transform.position = startPosition;
@@ -33,6 +40,7 @@ public class ObjectStats : MonoBehaviour
                 gameObject.GetComponent<BoxCollider>().enabled = true;
                 gameObject.GetComponent<ObjectStats>().isOnHand = false;
                 gameObject.name = this.gameObject.name;
+                alreadyUseToBeDuplicate = true;
             }
         }
     }
