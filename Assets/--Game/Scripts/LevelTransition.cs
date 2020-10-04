@@ -9,7 +9,7 @@ public class LevelTransition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.layer == 9)
             SceneManager.LoadScene(levelToLoad);
     }
 }
