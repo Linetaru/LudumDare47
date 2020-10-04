@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class PlayerInventory : MonoBehaviour
     public LayerMask layerMaskNoPlayer;
     RaycastHit hit;
 
-    public int maxDistanceRayCast;
+    public int takeObjectMaxDistanceRayCast;
+    public int dropObjectMaxDistanceRayCast;
 
     const string left = "left";
     const string right = "right";
@@ -36,14 +38,14 @@ public class PlayerInventory : MonoBehaviour
         {
             if(leftHandGo != null)
             {
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistanceRayCast, layerMaskNoPlayer))
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, dropObjectMaxDistanceRayCast, layerMaskNoPlayer))
                 {
                     DropObjectInHand(left, hit.point);
                 }
             }
             else
             {
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistanceRayCast, layerMaskObject))
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, takeObjectMaxDistanceRayCast, layerMaskObject))
                 {
                     AddObjectInInventory(left, hit.collider.gameObject);
                 }
@@ -53,14 +55,14 @@ public class PlayerInventory : MonoBehaviour
         {
             if (rightHandGo != null)
             {
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistanceRayCast, layerMaskNoPlayer))
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, dropObjectMaxDistanceRayCast, layerMaskNoPlayer))
                 {
                     DropObjectInHand(right, hit.point);
                 }
             }
             else
             {
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, maxDistanceRayCast, layerMaskObject))
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, takeObjectMaxDistanceRayCast, layerMaskObject))
                 {
                     AddObjectInInventory(right, hit.collider.gameObject);
                 }
@@ -95,37 +97,43 @@ public class PlayerInventory : MonoBehaviour
         {
             leftHandGo.transform.parent = null;
             inventoryObjects.Remove(leftHandGo);
-            leftHandGo.transform.position = point + new Vector3(0, 0.5f, 0);
+            leftHandGo.transform.DOMove(point + new Vector3(0, 0.5f, 0), 0.25f) ;
             leftHandGo.GetComponent<Rigidbody>().useGravity = true;
+            leftHandGo.GetComponent<BoxCollider>().enabled = true;
+            if (leftHandGo.GetComponent<ObjectStats>() != null)
+                leftHandGo.GetComponent<ObjectStats>().isOnHand = false;
             leftHandGo = null;
         }
         else
         {
             rightHandGo.transform.parent = null;
             inventoryObjects.Remove(rightHandGo);
-            rightHandGo.transform.position = point + new Vector3(0, 0.5f, 0);
+            rightHandGo.transform.DOMove(point + new Vector3(0, 0.5f, 0), 0.25f);
             rightHandGo.GetComponent<Rigidbody>().useGravity = true;
+            rightHandGo.GetComponent<BoxCollider>().enabled = true;
+            if (rightHandGo.GetComponent<ObjectStats>() != null)
+                rightHandGo.GetComponent<ObjectStats>().isOnHand = false;
             rightHandGo = null;
         }
     }
 
     public void SetObjectInHand(string hand, GameObject go)
     {
-        if(hand == left)
+        if (hand == left)
         {
             leftHandGo = go;
-            go.transform.position = leftHand.transform.position;
+            go.transform.DOMove(leftHand.transform.position, 0.05f).OnComplete(() => { go.transform.position = leftHand.transform.position; go.GetComponent<BoxCollider>().enabled = false; });
             go.transform.parent = leftHand.parent;
-            go.GetComponent<Rigidbody>().useGravity = false;
         }
         else
         {
             rightHandGo = go;
+            go.transform.DOMove(rightHand.transform.position, 0.05f).OnComplete(() => { go.transform.position = rightHand.transform.position; go.GetComponent<BoxCollider>().enabled = false; });
             go.transform.parent = rightHand.parent;
-            go.transform.position = rightHand.transform.position;
-            go.GetComponent<Rigidbody>().useGravity = false;
         }
+        if(go.GetComponent<ObjectStats>() != null)
+            go.GetComponent<ObjectStats>().isOnHand = true;
+        go.GetComponent<Rigidbody>().useGravity = false;
     }
-
 
 }
