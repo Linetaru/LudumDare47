@@ -24,6 +24,9 @@ public class ObjectStats : MonoBehaviour
         {
             GameObject gameObject = Instantiate(this.gameObject);
             gameObject.transform.position = startPosition;
+            gameObject.GetComponent<Rigidbody>().useGravity = true;
+            gameObject.GetComponent<BoxCollider>().enabled = true;
+            gameObject.GetComponent<ObjectStats>().isOnHand = false;
             gameObject.name = this.gameObject.name;
         }
     }
