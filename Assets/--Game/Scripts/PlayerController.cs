@@ -5,9 +5,6 @@ using PackageCreator.Inputs;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject pauseMenu;
-    public GameObject image;
-    public GameObject crosshair;
 
     [Space]
     public int speed = 10;
@@ -30,6 +27,20 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool isPaused = false;
 
+    public static PlayerController instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -39,29 +50,32 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
+    void SwitchCursorMode(bool booleon)
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        if(booleon)
         {
-            isPaused = true;
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
-
-            pauseMenu.SetActive(true);
-            crosshair.SetActive(false);
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        else
         {
-            isPaused = false;
-            pauseMenu.SetActive(false);
-            crosshair.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            Time.timeScale = 1;
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPaused = !isPaused;
+            PauseMenu.instance.pauseMenu.SetActive(isPaused);
+            PauseMenu.instance.crosshair.SetActive(!isPaused);
+            SwitchCursorMode(isPaused);
+            GameManager.instance.Pause(isPaused);
         }
 
-        else if (!isPaused)
+        if (!isPaused)
         {
             // We are grounded, so recalculate move direction based on axes
             Vector3 forward = transform.TransformDirection(Vector3.forward);

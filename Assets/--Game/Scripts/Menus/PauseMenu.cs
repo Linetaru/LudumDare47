@@ -5,20 +5,47 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+
+    public GameObject pauseMenu;
+    [HideInInspector] public GameObject crosshair;
+
     public string mainMenuSceneName;
-    public GameObject player;
+
+    public static PauseMenu instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    private void Start()
+    {
+        if(GameObject.Find("Crosshair") != null)
+        {
+            crosshair = GameObject.Find("Crosshair");
+        }
+    }
 
     public void ResumeGame()
     {
-        player.GetComponent<PlayerController>().isPaused = false;
+        PlayerController.instance.isPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
+        crosshair.SetActive(true);
+        GameManager.instance.Pause(false);
     }
 
     public void RetryLevel()
     {
-        Time.timeScale = 1;
+        GameManager.instance.Pause(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
