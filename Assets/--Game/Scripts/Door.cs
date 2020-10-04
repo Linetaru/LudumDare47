@@ -53,17 +53,17 @@ public class Door : MonoBehaviour
         {
 #if UNITY_EDITOR
             Debug.Log("Open the door!");
+#endif
             StartOpenDoor();
             isOpen = true;
-#endif
         }
         else if (!allActivated && isOpen)
         {
 #if UNITY_EDITOR
             Debug.Log("Close the door!");
+#endif
             StartCloseDoor();
             isOpen = false;
-#endif
         }
     }
 
