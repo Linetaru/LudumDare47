@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -95,16 +96,20 @@ public class PlayerInventory : MonoBehaviour
         {
             leftHandGo.transform.parent = null;
             inventoryObjects.Remove(leftHandGo);
-            leftHandGo.transform.position = point + new Vector3(0, 0.5f, 0);
+            leftHandGo.transform.DOMove(point + new Vector3(0, 0.5f, 0), 0.25f) ;
             leftHandGo.GetComponent<Rigidbody>().useGravity = true;
+            leftHandGo.GetComponent<BoxCollider>().enabled = true;
+            leftHandGo.GetComponent<ObjectStats>().isOnHand = false;
             leftHandGo = null;
         }
         else
         {
             rightHandGo.transform.parent = null;
             inventoryObjects.Remove(rightHandGo);
-            rightHandGo.transform.position = point + new Vector3(0, 0.5f, 0);
+            rightHandGo.transform.DOMove(point + new Vector3(0, 0.5f, 0), 0.25f);
             rightHandGo.GetComponent<Rigidbody>().useGravity = true;
+            rightHandGo.GetComponent<BoxCollider>().enabled = true;
+            rightHandGo.GetComponent<ObjectStats>().isOnHand = false;
             rightHandGo = null;
         }
     }
@@ -114,18 +119,18 @@ public class PlayerInventory : MonoBehaviour
         if(hand == left)
         {
             leftHandGo = go;
-            go.transform.position = leftHand.transform.position;
+            go.transform.DOMove(leftHand.transform.position,0.25f).OnComplete(() => go.transform.position = leftHand.transform.position);
             go.transform.parent = leftHand.parent;
-            go.GetComponent<Rigidbody>().useGravity = false;
         }
         else
         {
             rightHandGo = go;
+            go.transform.DOMove(rightHand.transform.position, 0.25f).OnComplete(() => go.transform.position = rightHand.transform.position);
             go.transform.parent = rightHand.parent;
-            go.transform.position = rightHand.transform.position;
-            go.GetComponent<Rigidbody>().useGravity = false;
         }
+        go.GetComponent<ObjectStats>().isOnHand = true;
+        go.GetComponent<Rigidbody>().useGravity = false;
+        go.GetComponent<BoxCollider>().enabled = false;
     }
-
 
 }

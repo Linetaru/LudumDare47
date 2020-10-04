@@ -14,10 +14,12 @@ public class Door : MonoBehaviour
     private Tween tween;
     /*private float maxPosY;
     private float minPosY;*/
-
+    
     private void Start()
     {
         tween = null;
+        gameObject.GetComponent<MeshRenderer>().material.SetFloat("_DissolveAmount", 1f);
+        StartCloseDoor();
     }
 
     private void Update()
