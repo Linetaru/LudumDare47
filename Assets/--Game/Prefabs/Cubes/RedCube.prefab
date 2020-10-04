@@ -153,4 +153,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnHand: 0
   isObjectCanBeDuplicate: 1
-  numberOfCubeSpawnable: 1

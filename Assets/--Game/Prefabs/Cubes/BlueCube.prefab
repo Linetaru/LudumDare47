@@ -110,7 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOnHand: 0
   isObjectCanBeDuplicate: 1
-  numberOfCubeSpawnable: 1
 --- !u!114 &6913145548482828146
 MonoBehaviour:
   m_ObjectHideFlags: 0
