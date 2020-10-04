@@ -151,6 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca86df531f59ba246851913dd83144f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabCube: {fileID: 315393686889694805}
   isOnHand: 0
   isObjectCanBeDuplicate: 1
+  numberOfCubeSpawnable: 2
