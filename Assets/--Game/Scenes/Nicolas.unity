@@ -2570,5 +2570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6794520201914979247, guid: 84be04598546a744b91bc4dc5ee72e87,
+        type: 3}
+      propertyPath: layerMaskObject.m_Bits
+      value: 1280
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84be04598546a744b91bc4dc5ee72e87, type: 3}

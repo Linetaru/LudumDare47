@@ -41,7 +41,6 @@ public class RoomReset : MonoBehaviour
         }
     }
     
-
     void ResetAllRoom()
     {
         resetEvent.Raise();
