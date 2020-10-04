@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 163207754088955692}
   - component: {fileID: 163207754088955693}
   - component: {fileID: 163207754088955681}
+  - component: {fileID: 129521465011227989}
+  - component: {fileID: -4881880844417242567}
   m_Layer: 8
   m_Name: WhiteCube
   m_TagString: Untagged
@@ -110,3 +112,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &129521465011227989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163207754088955694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca86df531f59ba246851913dd83144f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnHand: 0
+  isObjectCanBeDuplicate: 1
+  numberOfCubeSpawnable: 2
+--- !u!114 &-4881880844417242567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163207754088955694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934b57a537db8104fb8c234a7dd159af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 36012302d049f2943b471aa9d1aa75cf, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 129521465011227989}
+        m_MethodName: ResetObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
