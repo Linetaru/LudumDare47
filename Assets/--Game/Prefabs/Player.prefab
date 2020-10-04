@@ -264,7 +264,8 @@ MonoBehaviour:
   layerMaskNoPlayer:
     serializedVersion: 2
     m_Bits: 311
-  maxDistanceRayCast: 10
+  takeObjectMaxDistanceRayCast: 8
+  dropObjectMaxDistanceRayCast: 8
 --- !u!114 &6794520201914979232
 MonoBehaviour:
   m_ObjectHideFlags: 0
