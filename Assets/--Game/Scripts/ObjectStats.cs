@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ObjectStats : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class ObjectStats : MonoBehaviour
         }
 
         if (!isOnHand)
-            this.transform.position = startPosition;
+            this.transform.DOMove(startPosition,0.001f);
 
         if (isObjectCanBeDuplicate && isOnHand)
         {
