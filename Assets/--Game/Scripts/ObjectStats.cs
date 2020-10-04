@@ -7,6 +7,7 @@ public class ObjectStats : MonoBehaviour
     private Vector3 startPosition;
 
     [HideInInspector] public bool isOnHand;
+    public bool isObjectCanBeDuplicate;
 
     private void Start()
     {
@@ -18,5 +19,12 @@ public class ObjectStats : MonoBehaviour
     {
         if(!isOnHand)
             this.transform.position = startPosition;
+
+        if(isObjectCanBeDuplicate && isOnHand)
+        {
+            GameObject gameObject = Instantiate(this.gameObject);
+            gameObject.transform.position = startPosition;
+            gameObject.name = this.gameObject.name;
+        }
     }
 }

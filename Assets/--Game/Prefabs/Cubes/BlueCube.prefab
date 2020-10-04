@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7405985640851501198}
   - component: {fileID: 7405985640851501199}
   - component: {fileID: 7405985640851501196}
+  - component: {fileID: -1021852834689662914}
+  - component: {fileID: 6913145548482828146}
   - component: {fileID: 7405985640851501197}
   m_Layer: 8
   m_Name: BlueCube
@@ -94,6 +96,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1021852834689662914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405985640851501234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca86df531f59ba246851913dd83144f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnHand: 0
+  isObjectCanBeDuplicate: 1
+--- !u!114 &6913145548482828146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7405985640851501234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934b57a537db8104fb8c234a7dd159af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 36012302d049f2943b471aa9d1aa75cf, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -1021852834689662914}
+        m_MethodName: ResetObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &7405985640851501197
 Rigidbody:
   m_ObjectHideFlags: 0

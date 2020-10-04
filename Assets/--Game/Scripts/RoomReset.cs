@@ -11,6 +11,10 @@ public class RoomReset : MonoBehaviour
     public GameObject player;
 
     public GameEvent resetEvent;
+    
+    private bool isPlayerExitRoom;
+
+    public ChildTrigger childTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -27,19 +31,23 @@ public class RoomReset : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
         if (other.gameObject.layer == 9)
-            ResetAllRoom();
+        {
+            if (childTrigger.isAfterDoor)
+            {
+                ResetAllRoom();
+            }
+
+        }
     }
+    
 
     void ResetAllRoom()
     {
         resetEvent.Raise();
         player.transform.position = startPosition;
         player.transform.rotation = startRotation;
+        isPlayerExitRoom = false;
+        childTrigger.isAfterDoor = false;
     }
 }
