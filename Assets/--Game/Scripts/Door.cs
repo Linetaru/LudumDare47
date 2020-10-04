@@ -10,27 +10,21 @@ public class Door : MonoBehaviour
     public float durationToDisappear;
     public float durationToAppear;
 
-    private float durToDisappear = 0f;
-    private float durToAppear = 0f;
-
     private bool isOpen = false;
-    private Action DoAction;
-
-    private Color colorAlpha;
-
     private Tween tween;
-
+    /*private float maxPosY;
+    private float minPosY;*/
+    
     private void Start()
     {
-        //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
-        //DoAction = DoActionVoid;
         tween = null;
+        gameObject.GetComponent<MeshRenderer>().material.SetFloat("_DissolveAmount", 1f);
+        StartCloseDoor();
     }
 
     private void Update()
     {
         CheckDoorPlates();
-        //DoAction();
     }
 
     private void CheckDoorPlates()
@@ -73,57 +67,25 @@ public class Door : MonoBehaviour
         }
     }
 
-    private void DoActionVoid()
-    {
-    }
-
     private void StartOpenDoor()
     {
         gameObject.GetComponent<Collider>().enabled = false;
-        //durToDisappear = durationToDisappear - durToAppear;
-        //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
-        if(tween != null)
+
+        if (tween != null)
             if (tween.IsPlaying())
                 tween.Kill();
 
-        tween = gameObject.transform.DOMoveY(gameObject.transform.position.y + 3, durationToDisappear);
-    }
-
-    private void OpenDoor()
-    {
-        durToDisappear -= Time.deltaTime;
-
-        if (durToDisappear <= 0f)
-        {
-            durToDisappear = 0f;
-            DoAction = DoActionVoid;
-        }
-        else
-            gameObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color (colorAlpha.r, colorAlpha.g, colorAlpha.b, 0f), colorAlpha, durToDisappear);
+        tween = gameObject.GetComponent<MeshRenderer>().material.DOFloat(1f, "_DissolveAmount", durationToDisappear);
     }
 
     private void StartCloseDoor()
     {
         gameObject.GetComponent<Collider>().enabled = true;
-        //durToAppear = durationToAppear - durToDisappear;
-        //colorAlpha = gameObject.GetComponent<Renderer>().material.color;
-        //DoAction = CloseDoor;
+
         if (tween != null)
             if (tween.IsPlaying())
                 tween.Kill();
-        tween = gameObject.transform.DOMoveY(gameObject.transform.position.y - 3, durationToAppear);
-    }
 
-    private void CloseDoor()
-    {
-        durToAppear -= Time.deltaTime;
-
-        if (durToAppear <= 0f)
-        {
-            durToAppear = 0f;
-            DoAction = DoActionVoid;
-        }
-        else
-            gameObject.GetComponent<Renderer>().material.color = Color.Lerp(new Color(colorAlpha.r, colorAlpha.g, colorAlpha.b, 1f), colorAlpha, durToAppear);
+        tween = gameObject.GetComponent<MeshRenderer>().material.DOFloat(0f, "_DissolveAmount", durationToAppear);
     }
 }
