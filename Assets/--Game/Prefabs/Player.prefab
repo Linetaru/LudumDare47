@@ -454,10 +454,10 @@ MonoBehaviour:
   rightHand: {fileID: 6794520200475673563}
   layerMaskObject:
     serializedVersion: 2
-    m_Bits: 1331
+    m_Bits: 5427
   layerMaskNoPlayer:
     serializedVersion: 2
-    m_Bits: 307
+    m_Bits: 4403
   takeObjectMaxDistanceRayCast: 8
   dropObjectMaxDistanceRayCast: 8
   rightLineRenderer: {fileID: 1165201449}
