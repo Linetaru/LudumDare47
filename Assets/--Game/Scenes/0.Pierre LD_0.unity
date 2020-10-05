@@ -23492,22 +23492,25 @@ PrefabInstance:
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_text
-      value: "Chapter 0: \nGive us data, and we will gave you freedom."
+      value: 'Chapter 0 : First Contact
+
+        Give us data, and we will gave you
+        freedom.'
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 55
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
