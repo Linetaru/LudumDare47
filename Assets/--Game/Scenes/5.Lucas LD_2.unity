@@ -8803,6 +8803,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 354552100743910433, guid: b0f7d8d5a64f3804aac585a85143a1fd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2613121542111429673, guid: b0f7d8d5a64f3804aac585a85143a1fd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2871367276699451431, guid: b0f7d8d5a64f3804aac585a85143a1fd,
         type: 3}
       propertyPath: m_Name
@@ -8877,6 +8887,16 @@ PrefabInstance:
         type: 3}
       propertyPath: levelToLoad
       value: Credits
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677159004005152401, guid: b0f7d8d5a64f3804aac585a85143a1fd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5964387161078236169, guid: b0f7d8d5a64f3804aac585a85143a1fd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0f7d8d5a64f3804aac585a85143a1fd, type: 3}
