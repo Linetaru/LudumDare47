@@ -36,7 +36,7 @@ public class RoomReset : MonoBehaviour
             if (childTrigger.isAfterDoor)
             {
                 Time.timeScale = 0;
-                TransitionController.instance?.FadeIn(() => { TransitionController.instance.FadeOut(); ResetAllRoom(); Time.timeScale = 1; });
+                TransitionController.instance?.FadeInDoor(() => { TransitionController.instance.FadeOut(); ResetAllRoom(); Time.timeScale = 1; });
             }
 
         }
