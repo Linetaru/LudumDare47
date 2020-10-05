@@ -51,17 +51,11 @@ public class Door : MonoBehaviour
         }
         if (allActivated && !isOpen)
         {
-#if UNITY_EDITOR
-            Debug.Log("Open the door!");
-#endif
             StartOpenDoor();
             isOpen = true;
         }
         else if (!allActivated && isOpen)
         {
-#if UNITY_EDITOR
-            Debug.Log("Close the door!");
-#endif
             StartCloseDoor();
             isOpen = false;
         }
@@ -69,6 +63,11 @@ public class Door : MonoBehaviour
 
     private void StartOpenDoor()
     {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.SfxDoor(SoundManager.State.Stop);
+            SoundManager.instance.SfxDoor(SoundManager.State.Play);
+        }
         gameObject.layer = 12;
         //gameObject.GetComponent<Collider>().enabled = false;
 
@@ -81,6 +80,11 @@ public class Door : MonoBehaviour
 
     private void StartCloseDoor()
     {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.SfxDoor(SoundManager.State.Stop);
+            SoundManager.instance.SfxDoor(SoundManager.State.Play);
+        }
         gameObject.layer = 0;
         //gameObject.GetComponent<Collider>().enabled = true;
 

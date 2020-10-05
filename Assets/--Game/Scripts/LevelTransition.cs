@@ -10,6 +10,9 @@ public class LevelTransition : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == 9)
+        {
+            Time.timeScale = 0;
             TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(levelToLoad));
+        }
     }
 }

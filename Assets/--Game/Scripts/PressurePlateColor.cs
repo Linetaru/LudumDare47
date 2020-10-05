@@ -26,6 +26,11 @@ public class PressurePlateColor : MonoBehaviour
             || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
         {
             isActivate = true;
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.SfxButtonOn(SoundManager.State.Stop);
+                SoundManager.instance.SfxButtonOn(SoundManager.State.Play);
+            }
         }
     }
 
@@ -38,6 +43,11 @@ public class PressurePlateColor : MonoBehaviour
             || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
         {
             isActivate = false;
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.SfxButtonOff(SoundManager.State.Stop);
+                SoundManager.instance.SfxButtonOff(SoundManager.State.Play);
+            }
         }
     }
 }

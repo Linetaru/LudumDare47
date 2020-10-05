@@ -44,6 +44,11 @@ public class RoomReset : MonoBehaviour
     
     void ResetAllRoom()
     {
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.SfxReset(SoundManager.State.Stop);
+            SoundManager.instance.SfxReset(SoundManager.State.Play);
+        }
         resetEvent.Raise();
         player.transform.position = startPosition;
         player.transform.rotation = startRotation;

@@ -32,12 +32,22 @@ public class PressurePlate : MonoBehaviour
             {
                 goOnPressurePlate.Add(other.gameObject);
                 isActivate = true;
+                if (SoundManager.instance != null)
+                {
+                    SoundManager.instance.SfxButtonOn(SoundManager.State.Stop);
+                    SoundManager.instance.SfxButtonOn(SoundManager.State.Play);
+                }
             }
         }
         else
         {
             goOnPressurePlate.Add(other.gameObject);
             isActivate = true;
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.SfxButtonOn(SoundManager.State.Stop);
+                SoundManager.instance.SfxButtonOn(SoundManager.State.Play);
+            }
         }
     }
 
@@ -46,6 +56,11 @@ public class PressurePlate : MonoBehaviour
         if (goOnPressurePlate.Contains(other.gameObject))
         {
             goOnPressurePlate.Remove(other.gameObject);
+            if (SoundManager.instance != null)
+            {
+                SoundManager.instance.SfxButtonOff(SoundManager.State.Stop);
+                SoundManager.instance.SfxButtonOff(SoundManager.State.Play);
+            }
         }
 
         if (goOnPressurePlate.Count == 0)

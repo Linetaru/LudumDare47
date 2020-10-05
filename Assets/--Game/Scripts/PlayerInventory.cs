@@ -188,6 +188,37 @@ public class PlayerInventory : MonoBehaviour
         if(go.GetComponent<ObjectStats>() != null)
             go.GetComponent<ObjectStats>().isOnHand = true;
         go.GetComponent<Rigidbody>().isKinematic = true;
+        if (SoundManager.instance != null)
+        {
+            if(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") == Color.red)
+            {
+                SoundManager.instance.SfxCubeBleu(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeBlanc(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeTemporel(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeRouge(SoundManager.State.Play);
+            }
+            else if(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") == Color.blue)
+            {
+                SoundManager.instance.SfxCubeBleu(SoundManager.State.Play);
+                SoundManager.instance.SfxCubeBlanc(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeTemporel(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeRouge(SoundManager.State.Stop);
+            }
+            else if (go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") == Color.white)
+            {
+                SoundManager.instance.SfxCubeBleu(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeBlanc(SoundManager.State.Play);
+                SoundManager.instance.SfxCubeTemporel(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeRouge(SoundManager.State.Stop);
+            }
+            else if (go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") == Color.magenta)
+            {
+                SoundManager.instance.SfxCubeBleu(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeBlanc(SoundManager.State.Stop);
+                SoundManager.instance.SfxCubeTemporel(SoundManager.State.Play);
+                SoundManager.instance.SfxCubeRouge(SoundManager.State.Stop);
+            }
+        }
     }
 
 }
