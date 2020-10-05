@@ -11,6 +11,7 @@ public class TransitionController : MonoBehaviour
 
     public Image transitionImage = null;
     public float timeToTransition = 1;
+    public float timeToTransitionDoorFadeIn = 0.1f;
 
     private void Awake()
     {
@@ -18,6 +19,11 @@ public class TransitionController : MonoBehaviour
         else if (instance != this) Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void FadeInDoor(Action callback)
+    {
+        transitionImage.DOFade(1, timeToTransitionDoorFadeIn / 2).SetUpdate(true).OnComplete(() => callback());
     }
 
     public void FadeIn(Action callback)
