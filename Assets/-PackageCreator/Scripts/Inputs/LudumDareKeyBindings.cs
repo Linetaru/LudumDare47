@@ -44,6 +44,21 @@ namespace PackageCreator.Inputs
                 case s_moveforward:
                     return moveforward;
 
+                case s_moveback:
+                    return moveback;
+
+                case s_moveleft:
+                    return moveleft;
+
+                case s_moveright:
+                    return moveright;
+
+                case s_moveforward2:
+                    return moveforward2;
+
+                case s_moveleft2:
+                    return moveleft2;
+
                 default:
                     return KeyCode.None;
 
