@@ -20,6 +20,7 @@ public class Credit : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1;
         speedBase = speed;
+        TransitionController.instance.FadeOut();
     }
 
     private void Update()
@@ -27,7 +28,7 @@ public class Credit : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
         {
             sceneChange = false;
-            SceneManager.LoadScene(returnMainMenu);
+            TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(returnMainMenu));
         }
 
         if (isRolling && sceneChange)
@@ -46,7 +47,7 @@ public class Credit : MonoBehaviour
         else if (sceneChange)
         {
             sceneChange = false;
-            SceneManager.LoadScene(returnMainMenu);
+            TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(returnMainMenu));
         }
     }
 

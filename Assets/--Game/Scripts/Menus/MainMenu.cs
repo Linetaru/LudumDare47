@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
         Time.timeScale = 1;
+        TransitionController.instance?.FadeOut();
         UpdateTimerText();
     }
 
@@ -30,13 +31,13 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(nameLevel);
+        TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(nameLevel));
     }
 
     public void PlayCredits()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(creditsSceneName);
+        TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(creditsSceneName));
     }
 
     public void QuitGame()
