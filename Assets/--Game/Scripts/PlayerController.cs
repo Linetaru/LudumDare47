@@ -48,7 +48,8 @@ public class PlayerController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        TransitionController.instance.FadeOut();
+        if(TransitionController.instance != null)
+            TransitionController.instance.FadeOut();
     }
 
     void SwitchCursorMode(bool booleon)

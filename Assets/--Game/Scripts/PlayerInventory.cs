@@ -153,6 +153,8 @@ public class PlayerInventory : MonoBehaviour
     {
         if (hand == left)
         {
+            leftLineRenderer.startColor = go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+            leftLineRenderer.endColor = go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
             isSetPositionLineRenderLeft = true;
             leftHandGo = go;
             go.transform.DOMove(leftHand.transform.position, 0.2f)
@@ -168,6 +170,8 @@ public class PlayerInventory : MonoBehaviour
         }
         else
         {
+            rightLineRenderer.startColor = go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+            rightLineRenderer.endColor = go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
             isSetPositionLineRenderRight = true;
             rightHandGo = go;
             go.transform.DOMove(rightHand.transform.position, 0.2f)
