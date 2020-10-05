@@ -69,7 +69,8 @@ public class Door : MonoBehaviour
 
     private void StartOpenDoor()
     {
-        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.layer = 12;
+        //gameObject.GetComponent<Collider>().enabled = false;
 
         if (tween != null)
             if (tween.IsPlaying())
@@ -80,7 +81,8 @@ public class Door : MonoBehaviour
 
     private void StartCloseDoor()
     {
-        gameObject.GetComponent<Collider>().enabled = true;
+        gameObject.layer = 0;
+        //gameObject.GetComponent<Collider>().enabled = true;
 
         if (tween != null)
             if (tween.IsPlaying())
