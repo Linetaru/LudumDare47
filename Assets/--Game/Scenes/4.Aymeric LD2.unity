@@ -19081,27 +19081,34 @@ PrefabInstance:
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
+        type: 3}
+      propertyPath: m_text
+      value: 'Chapter 3 : Again
+
+        The loop never ends.'
       objectReference: {fileID: 0}
     - target: {fileID: 6100651724317351450, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
