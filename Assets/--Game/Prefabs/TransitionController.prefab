@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionImage: {fileID: 4862130629067672696}
   timeToTransition: 1
+  timeToTransitionDoorFadeIn: 0.1
 --- !u!1 &4862130629067672699
 GameObject:
   m_ObjectHideFlags: 0
