@@ -2575,6 +2575,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 769648984}
+    - target: {fileID: 6380316429455924410, guid: a856c144ef25ec146a98086e7b65c1bc,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.48709822
+      objectReference: {fileID: 0}
+    - target: {fileID: 6380316429455924410, guid: a856c144ef25ec146a98086e7b65c1bc,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.023191214
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a856c144ef25ec146a98086e7b65c1bc, type: 3}
 --- !u!1001 &6794520202158637239
@@ -2643,6 +2653,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794520201914979247, guid: 84be04598546a744b91bc4dc5ee72e87,
+        type: 3}
+      propertyPath: layerMaskObject.m_Bits
+      value: 5427
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794520201914979247, guid: 84be04598546a744b91bc4dc5ee72e87,
+        type: 3}
+      propertyPath: layerMaskNoPlayer.m_Bits
+      value: 4403
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84be04598546a744b91bc4dc5ee72e87, type: 3}
