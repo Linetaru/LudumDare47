@@ -15479,7 +15479,7 @@ PrefabInstance:
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_text
-      value: "Chapter 5: A rainbow of colors \nDo not let all these colors confuse
+      value: "Chapter 4: A rainbow of colors \nDo not let all these colors confuse
         you"
       objectReference: {fileID: 0}
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,

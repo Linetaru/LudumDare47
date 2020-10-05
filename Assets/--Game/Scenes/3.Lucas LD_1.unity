@@ -10260,7 +10260,7 @@ PrefabInstance:
     - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_text
-      value: 'Chapter 3: Colored cubes
+      value: 'Chapter 2: Colored cubes
 
         Trust your eyes, they will not fool
         you
