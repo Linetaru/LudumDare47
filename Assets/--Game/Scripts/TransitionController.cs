@@ -11,7 +11,7 @@ public class TransitionController : MonoBehaviour
 
     public Image transitionImage = null;
     public float timeToTransition = 1;
-    public float timeToTransitionDoorFadeIn = 0.2f;
+    public float timeToTransitionDoorFadeIn = 0.1f;
 
     private void Awake()
     {
