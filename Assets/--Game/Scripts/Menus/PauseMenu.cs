@@ -46,11 +46,11 @@ public class PauseMenu : MonoBehaviour
     public void RetryLevel()
     {
         GameManager.instance.Pause(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
     }
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene(mainMenuSceneName);
+        TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(mainMenuSceneName));
     }
 }

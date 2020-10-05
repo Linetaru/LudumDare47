@@ -29,10 +29,19 @@ public class GeneralCountDown : MonoBehaviour
         timer = 0;
     }
 
+    public void SetTimerTextOnMainMenu()
+    {
+        string hours = Mathf.Floor((timer % 216000) / 3600).ToString("00");
+        string minutes = Mathf.Floor((timer % 3600) / 60).ToString("00");
+        string seconds = (timer % 60).ToString("00");
+        if (text != null)
+            text.text = hours + ":" + minutes + ":" + seconds;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "Credits")
+        if ((SceneManager.GetActiveScene().name == "MainMenu" || SceneManager.GetActiveScene().name == "Credits") && isTimerNeedtoBeActif)
         {
             isTimerNeedtoBeActif = false;
         }

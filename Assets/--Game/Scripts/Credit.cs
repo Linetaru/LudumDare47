@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Credit : MonoBehaviour
 {
     public int speed;
+    private int speedBase;
     [Header("Menu")]
     public string returnMainMenu;
 
@@ -15,25 +16,38 @@ public class Credit : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
         Time.timeScale = 1;
+        speedBase = speed;
+        TransitionController.instance.FadeOut();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return))
         {
             sceneChange = false;
-            SceneManager.LoadScene(returnMainMenu);
+            TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(returnMainMenu));
         }
 
         if (isRolling && sceneChange)
+        {
             transform.Translate(0, speed * Time.deltaTime, 0);
+
+            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0))
+            {
+                speed = speedBase * 6;
+            }
+            else
+            {
+                speed = speedBase;
+            }
+        }
         else if (sceneChange)
         {
             sceneChange = false;
-            SceneManager.LoadScene(returnMainMenu);
+            TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(returnMainMenu));
         }
     }
 

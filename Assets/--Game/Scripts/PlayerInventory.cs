@@ -124,7 +124,7 @@ public class PlayerInventory : MonoBehaviour
                     isSetPositionLineRenderLeft = false;
                     leftHandGo = null;
                 });
-            leftHandGo.GetComponent<Rigidbody>().useGravity = true;
+            leftHandGo.GetComponent<Rigidbody>().isKinematic = false;
             leftHandGo.GetComponent<BoxCollider>().enabled = true;
             if (leftHandGo.GetComponent<ObjectStats>() != null)
                 leftHandGo.GetComponent<ObjectStats>().isOnHand = false;
@@ -140,7 +140,7 @@ public class PlayerInventory : MonoBehaviour
                     isSetPositionLineRenderRight = false;
                     rightHandGo = null;
                 });
-            rightHandGo.GetComponent<Rigidbody>().useGravity = true;
+            rightHandGo.GetComponent<Rigidbody>().isKinematic = false;
             rightHandGo.GetComponent<BoxCollider>().enabled = true;
             if (rightHandGo.GetComponent<ObjectStats>() != null)
                 rightHandGo.GetComponent<ObjectStats>().isOnHand = false;
@@ -157,6 +157,7 @@ public class PlayerInventory : MonoBehaviour
                 .OnUpdate(() => leftLineRenderer.SetPosition(1, go.transform.position))
                 .OnComplete(() => {
                     go.transform.position = leftHand.transform.position;
+                    go.transform.rotation = Quaternion.Euler(-90, go.transform.rotation.y, go.transform.rotation.z);
                     go.GetComponent<BoxCollider>().enabled = false;
                     isSetPositionLineRenderLeft = false;
                 });
@@ -170,6 +171,7 @@ public class PlayerInventory : MonoBehaviour
                 .OnUpdate(() => rightLineRenderer.SetPosition(1, go.transform.position))
                 .OnComplete(() => {
                     go.transform.position = rightHand.transform.position;
+                    go.transform.rotation = Quaternion.Euler(-90, go.transform.rotation.y, go.transform.rotation.z);
                     go.GetComponent<BoxCollider>().enabled = false;
                     isSetPositionLineRenderRight = false;
                 });
@@ -177,7 +179,7 @@ public class PlayerInventory : MonoBehaviour
         }
         if(go.GetComponent<ObjectStats>() != null)
             go.GetComponent<ObjectStats>().isOnHand = true;
-        go.GetComponent<Rigidbody>().useGravity = false;
+        go.GetComponent<Rigidbody>().isKinematic = true;
     }
 
 }
