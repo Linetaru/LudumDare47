@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
