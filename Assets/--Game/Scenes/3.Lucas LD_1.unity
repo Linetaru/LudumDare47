@@ -10257,6 +10257,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
+        type: 3}
+      propertyPath: m_text
+      value: 'Chapter 3: Colored cubes
+
+        Trust your eyes, they will not fool
+        you
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679782254222761980, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6100651724317351450, guid: fbb725bdece2bd7468f59bc0ab34e6a1,
         type: 3}
       propertyPath: m_AnchoredPosition.x
