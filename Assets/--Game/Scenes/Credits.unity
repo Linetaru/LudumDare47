@@ -352,7 +352,8 @@ MonoBehaviour:
     Guerin\n\n<size=50>Game Artist\r</size>\n\rLead : Alexandre Roblin\n3D Modeler
     : Robin Psaila\n\n<size=50>Game Designers\r</size>\nLead : Pierre Mallet\nEloise
     Gur\nAymeric Mullot\nLucas Sanchez\n\n<size=50>Producers\r</size>\nLead : Nicolas
-    Villard\n\rRobin Psaila\n\n\r\n<size=50>THE END\r</size>"
+    Villard\n\rRobin Psaila\n\nMusic by Karl Casey @ White Bat Audio\n\r\n<size=50>THE
+    END\r</size>"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95ac240207a3b044b8ee0d806d538739, type: 2}
   m_sharedMaterial: {fileID: 3049226931722206355, guid: 95ac240207a3b044b8ee0d806d538739,
@@ -422,12 +423,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: -3.0380344}
   m_textInfo:
     textComponent: {fileID: 461935766}
-    characterCount: 399
+    characterCount: 437
     spriteCount: 0
-    spaceCount: 74
-    wordCount: 62
+    spaceCount: 82
+    wordCount: 69
     linkCount: 0
-    lineCount: 26
+    lineCount: 27
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

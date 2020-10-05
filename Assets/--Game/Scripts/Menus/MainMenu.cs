@@ -17,6 +17,11 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1;
         TransitionController.instance?.FadeOut();
         UpdateTimerText();
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.MusicMenu(SoundManager.State.Play);
+            SoundManager.instance.MusicLevel(SoundManager.State.Stop);
+        }
     }
 
     public void UpdateTimerText()
@@ -32,6 +37,11 @@ public class MainMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         TransitionController.instance?.FadeIn(() => SceneManager.LoadScene(nameLevel));
+        if (SoundManager.instance != null)
+        {
+            SoundManager.instance.MusicMenu(SoundManager.State.Stop);
+            SoundManager.instance.MusicLevel(SoundManager.State.Play);
+        }
     }
 
     public void PlayCredits()
