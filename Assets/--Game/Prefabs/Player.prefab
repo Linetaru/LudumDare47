@@ -476,11 +476,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   walkingSpeed: 5
-  jumpSpeed: 5
+  jumpSpeed: 10
   gravity: 20
   playerCamera: {fileID: 6794520200858239358}
   lookSpeed: 2
-  lookXLimit: 45
+  lookXLimit: 90
   canMove: 1
   isPaused: 0
 --- !u!143 &6794520201914979233

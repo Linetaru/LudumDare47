@@ -17,6 +17,57 @@ public class PressurePlateColor : MonoBehaviour
     [HideInInspector]
     public bool isActivate = false;
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if ((other.CompareTag("YellowCube") && CubeColorToActive == CubeColor.Yellow)
+    //        || (other.CompareTag("RedCube") && CubeColorToActive == CubeColor.Red)
+    //        || (other.CompareTag("GreenCube") && CubeColorToActive == CubeColor.Green)
+    //        || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue)
+    //        || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
+    //    {
+    //        isActivate = true;
+    //        if (SoundManager.instance != null)
+    //        {
+    //            SoundManager.instance.SfxButtonOn(SoundManager.State.Stop);
+    //            SoundManager.instance.SfxButtonOn(SoundManager.State.Play);
+    //        }
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if ((other.CompareTag("YellowCube") && CubeColorToActive == CubeColor.Yellow)
+    //        || (other.CompareTag("RedCube") && CubeColorToActive == CubeColor.Red)
+    //        || (other.CompareTag("GreenCube") && CubeColorToActive == CubeColor.Green)
+    //        || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue)
+    //        || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
+    //    {
+    //        isActivate = false;
+    //        if (SoundManager.instance != null)
+    //        {
+    //            SoundManager.instance.SfxButtonOff(SoundManager.State.Stop);
+    //            SoundManager.instance.SfxButtonOff(SoundManager.State.Play);
+    //        }
+    //    }
+    //}
+
+    public List<GameObject> goOnPressurePlate = new List<GameObject>();
+
+    private void FixedUpdate()
+    {
+        for (int i = 0; i < goOnPressurePlate.Count; i++)
+        {
+            if (goOnPressurePlate[i] == null)
+            {
+                goOnPressurePlate.RemoveAt(i);
+            }
+        }
+        if (goOnPressurePlate.Count == 0)
+        {
+            isActivate = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if ((other.CompareTag("YellowCube") && CubeColorToActive == CubeColor.Yellow)
@@ -25,11 +76,29 @@ public class PressurePlateColor : MonoBehaviour
             || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue)
             || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
         {
-            isActivate = true;
-            if (SoundManager.instance != null)
+            if (goOnPressurePlate.Count != 0)
             {
-                SoundManager.instance.SfxButtonOn(SoundManager.State.Stop);
-                SoundManager.instance.SfxButtonOn(SoundManager.State.Play);
+                if (!goOnPressurePlate.Contains(other.gameObject))
+                {
+                    goOnPressurePlate.Add(other.gameObject);
+                    isActivate = true;
+                    if (SoundManager.instance != null)
+                    {
+                        SoundManager.instance.SfxButtonOn(SoundManager.State.Stop);
+                        SoundManager.instance.SfxButtonOn(SoundManager.State.Play);
+                    }
+                }
+            }
+
+            else
+            {
+                goOnPressurePlate.Add(other.gameObject);
+                isActivate = true;
+                if (SoundManager.instance != null)
+                {
+                    SoundManager.instance.SfxButtonOn(SoundManager.State.Stop);
+                    SoundManager.instance.SfxButtonOn(SoundManager.State.Play);
+                }
             }
         }
     }
@@ -42,11 +111,19 @@ public class PressurePlateColor : MonoBehaviour
             || (other.CompareTag("BlueCube") && CubeColorToActive == CubeColor.Blue)
             || (other.CompareTag("TemporalCube") && CubeColorToActive == CubeColor.Temporal))
         {
-            isActivate = false;
-            if (SoundManager.instance != null)
+            if (goOnPressurePlate.Contains(other.gameObject))
             {
-                SoundManager.instance.SfxButtonOff(SoundManager.State.Stop);
-                SoundManager.instance.SfxButtonOff(SoundManager.State.Play);
+                goOnPressurePlate.Remove(other.gameObject);
+                if (SoundManager.instance != null)
+                {
+                    SoundManager.instance.SfxButtonOff(SoundManager.State.Stop);
+                    SoundManager.instance.SfxButtonOff(SoundManager.State.Play);
+                }
+            }
+
+            if (goOnPressurePlate.Count == 0)
+            {
+                isActivate = false;
             }
         }
     }
