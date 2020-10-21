@@ -31,6 +31,8 @@ public class PlayerInventory : MonoBehaviour
     private bool isSetPositionLineRenderLeft;
     private bool isSetPositionLineRenderRight;
 
+    private bool isTweenFinish = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +115,10 @@ public class PlayerInventory : MonoBehaviour
 
     public void DropObjectInHand(string hand, Vector3 point)
     {
+        if (!isTweenFinish) { return; }
+
+        isTweenFinish = false;
+
         if (hand == left)
         {
             isSetPositionLineRenderLeft = true;
@@ -123,10 +129,11 @@ public class PlayerInventory : MonoBehaviour
                 .OnComplete(() => {
                     isSetPositionLineRenderLeft = false;
                     leftHandGo = null;
+                    isTweenFinish = true;
                 });
             leftHandGo.GetComponent<Rigidbody>().isKinematic = false;
             leftHandGo.GetComponent<BoxCollider>().enabled = true;
-            leftHandGo.GetComponent<MeshRenderer>().material.DOColor(leftHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 1);
+            leftHandGo.GetComponent<MeshRenderer>().material.DOColor(leftHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 0.5f);
             if (leftHandGo.GetComponent<ObjectStats>() != null)
                 leftHandGo.GetComponent<ObjectStats>().isOnHand = false;
         }
@@ -140,10 +147,11 @@ public class PlayerInventory : MonoBehaviour
                 .OnComplete(() => {
                     isSetPositionLineRenderRight = false;
                     rightHandGo = null;
+                    isTweenFinish = true;
                 });
             rightHandGo.GetComponent<Rigidbody>().isKinematic = false;
             rightHandGo.GetComponent<BoxCollider>().enabled = true;
-            rightHandGo.GetComponent<MeshRenderer>().material.DOColor(rightHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 1);
+            rightHandGo.GetComponent<MeshRenderer>().material.DOColor(rightHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 0.5f);
             if (rightHandGo.GetComponent<ObjectStats>() != null)
                 rightHandGo.GetComponent<ObjectStats>().isOnHand = false;
         }
@@ -151,6 +159,10 @@ public class PlayerInventory : MonoBehaviour
 
     public void SetObjectInHand(string hand, GameObject go)
     {
+        if(!isTweenFinish) { return; }
+
+        isTweenFinish = false;
+
         if (hand == left)
         {
             leftLineRenderer.startColor = go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
@@ -160,12 +172,13 @@ public class PlayerInventory : MonoBehaviour
             go.transform.DOMove(leftHand.transform.position, 0.2f)
                 .OnUpdate(() => leftLineRenderer.SetPosition(1, go.transform.position))
                 .OnComplete(() => {
-                    go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 1);
                     go.transform.position = leftHand.transform.position;
                     go.transform.rotation = Quaternion.Euler(-90, go.transform.rotation.y, go.transform.rotation.z);
                     go.GetComponent<BoxCollider>().enabled = false;
                     isSetPositionLineRenderLeft = false;
+                    isTweenFinish = true;
                 });
+            go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 1);
             go.transform.parent = leftHand.parent;
         }
         else
@@ -177,12 +190,13 @@ public class PlayerInventory : MonoBehaviour
             go.transform.DOMove(rightHand.transform.position, 0.2f)
                 .OnUpdate(() => rightLineRenderer.SetPosition(1, go.transform.position))
                 .OnComplete(() => {
-                    go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 1);
                     go.transform.position = rightHand.transform.position;
                     go.transform.rotation = Quaternion.Euler(-90, go.transform.rotation.y, go.transform.rotation.z);
                     go.GetComponent<BoxCollider>().enabled = false;
                     isSetPositionLineRenderRight = false;
+                    isTweenFinish = true;
                 });
+            go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 1);
             go.transform.parent = rightHand.parent;
         }
         if(go.GetComponent<ObjectStats>() != null)
