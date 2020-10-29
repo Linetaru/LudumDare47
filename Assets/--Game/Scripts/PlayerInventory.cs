@@ -128,12 +128,14 @@ public class PlayerInventory : MonoBehaviour
                 .OnUpdate(() => leftLineRenderer.SetPosition(1, leftHandGo.transform.position))
                 .OnComplete(() => {
                     isSetPositionLineRenderLeft = false;
+                    leftHandGo.GetComponent<MeshRenderer>().material.DOColor(leftHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 0.3f)
+                        .OnComplete(() => {
+                            isTweenFinish = true;
+                        });
                     leftHandGo = null;
-                    isTweenFinish = true;
                 });
             leftHandGo.GetComponent<Rigidbody>().isKinematic = false;
             leftHandGo.GetComponent<BoxCollider>().enabled = true;
-            leftHandGo.GetComponent<MeshRenderer>().material.DOColor(leftHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 0.5f);
             if (leftHandGo.GetComponent<ObjectStats>() != null)
                 leftHandGo.GetComponent<ObjectStats>().isOnHand = false;
         }
@@ -146,12 +148,14 @@ public class PlayerInventory : MonoBehaviour
                 .OnUpdate(() => rightLineRenderer.SetPosition(1, rightHandGo.transform.position))
                 .OnComplete(() => {
                     isSetPositionLineRenderRight = false;
+                    rightHandGo.GetComponent<MeshRenderer>().material.DOColor(rightHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 0.3f)
+                        .OnComplete(() => {
+                            isTweenFinish = true;
+                        });
                     rightHandGo = null;
-                    isTweenFinish = true;
                 });
             rightHandGo.GetComponent<Rigidbody>().isKinematic = false;
             rightHandGo.GetComponent<BoxCollider>().enabled = true;
-            rightHandGo.GetComponent<MeshRenderer>().material.DOColor(rightHandGo.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") / 5, "_EmissionColor", 0.5f);
             if (rightHandGo.GetComponent<ObjectStats>() != null)
                 rightHandGo.GetComponent<ObjectStats>().isOnHand = false;
         }
@@ -176,9 +180,11 @@ public class PlayerInventory : MonoBehaviour
                     go.transform.rotation = Quaternion.Euler(-90, go.transform.rotation.y, go.transform.rotation.z);
                     go.GetComponent<BoxCollider>().enabled = false;
                     isSetPositionLineRenderLeft = false;
-                    isTweenFinish = true;
+                    go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 0.3f)
+                        .OnComplete(() => {
+                            isTweenFinish = true;
+                        });
                 });
-            go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 1);
             go.transform.parent = leftHand.parent;
         }
         else
@@ -194,9 +200,11 @@ public class PlayerInventory : MonoBehaviour
                     go.transform.rotation = Quaternion.Euler(-90, go.transform.rotation.y, go.transform.rotation.z);
                     go.GetComponent<BoxCollider>().enabled = false;
                     isSetPositionLineRenderRight = false;
-                    isTweenFinish = true;
+                    go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 0.3f)
+                        .OnComplete(() =>{
+                            isTweenFinish = true;
+                        });
                 });
-            go.GetComponent<MeshRenderer>().material.DOColor(go.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor") * 5, "_EmissionColor", 1);
             go.transform.parent = rightHand.parent;
         }
         if(go.GetComponent<ObjectStats>() != null)
