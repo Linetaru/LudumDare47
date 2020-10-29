@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     float moveVertical;
 
     public float walkingSpeed = 7.5f;
+    public float sprintSpeed = 10.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Camera playerCamera;
@@ -85,8 +86,8 @@ public class PlayerController : MonoBehaviour
             Vector3 right = transform.TransformDirection(Vector3.right);
             // Press Left Shift to run
             bool isRunning = Input.GetKey(KeyCode.LeftShift);
-            float curSpeedX = walkingSpeed * Input.GetAxis("Vertical");
-            float curSpeedY = walkingSpeed * Input.GetAxis("Horizontal");
+            float curSpeedX = isRunning ? sprintSpeed * Input.GetAxis("Vertical") : walkingSpeed * Input.GetAxis("Vertical");
+            float curSpeedY = isRunning ? sprintSpeed * Input.GetAxis("Horizontal") : walkingSpeed * Input.GetAxis("Horizontal");
             float movementDirectionY = moveDirection.y;
             moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
@@ -98,6 +99,7 @@ public class PlayerController : MonoBehaviour
             {
                 moveDirection.y = movementDirectionY;
             }
+
 
             // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
             // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
