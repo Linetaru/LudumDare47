@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     public static PlayerController instance;
 
+    private float sensitivityMultiplicator;
+
     private void Awake()
     {
         if (instance == null)
@@ -44,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        playerCamera.fieldOfView = PlayerPrefs.GetFloat("playerFov", 80f);
+        sensitivityMultiplicator = PlayerPrefs.GetFloat("mouseSensitivity", 1f);
+
         Time.timeScale = 1;
         characterController = GetComponent<CharacterController>();
 
@@ -115,10 +120,10 @@ public class PlayerController : MonoBehaviour
             // Player and Camera rotation
             if (canMove)
             {
-                rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+                rotationX += -Input.GetAxis("Mouse Y") * lookSpeed * sensitivityMultiplicator;
                 rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
                 playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+                transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed * sensitivityMultiplicator, 0);
             }
         }
     }
